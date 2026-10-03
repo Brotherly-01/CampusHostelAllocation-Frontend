@@ -1,0 +1,34 @@
+@if (!isLoggedIn) {
+
+  @if (!showRegister) {
+
+    <app-login
+      (registerClicked)="showRegisterPage()"
+      (loginSuccess)="loginSuccessful($event)">
+    </app-login>
+
+  }
+
+  @if (showRegister) {
+
+    <app-register
+      (loginClicked)="showLoginPage()">
+    </app-register>
+
+  }
+
+}
+
+
+@if (isLoggedIn && loggedInRole === 'Admin') {
+
+  <app-admin-dashboard></app-admin-dashboard>
+
+}
+
+
+@if (isLoggedIn && loggedInRole !== 'Admin') {
+
+  <app-dashboard></app-dashboard>
+
+}

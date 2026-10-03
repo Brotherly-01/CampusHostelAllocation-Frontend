@@ -1,0 +1,253 @@
+@if (!showForm) {
+
+  <div class="manage-hostels-container">
+
+```
+<div class="page-header">
+
+  <div>
+
+    <h2>Manage Hostels</h2>
+
+    <p>
+      View and manage campus hostels.
+    </p>
+
+  </div>
+
+  <button
+    type="button"
+    class="add-button"
+    (click)="showAddForm()">
+
+    Add Hostel
+
+  </button>
+
+</div>
+
+
+@if (loading) {
+
+  <div class="loading-message">
+
+    <p>Loading hostels...</p>
+
+  </div>
+
+}
+
+
+@if (!loading && hostels.length > 0) {
+
+  <div class="hostels-card">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>Hostel Name</th>
+          <th>Location</th>
+          <th>Gender</th>
+          <th>Action</th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody>
+
+        @for (hostel of hostels; track hostel.id) {
+
+          <tr>
+
+            <td>
+              {{ hostel.hostelName }}
+            </td>
+
+            <td>
+              {{ hostel.location }}
+            </td>
+
+            <td>
+              {{ hostel.gender }}
+            </td>
+
+            <td>
+
+              <button
+                type="button"
+                class="edit-button"
+                (click)="editHostel(hostel)">
+
+                Edit
+
+              </button>
+
+
+              <button
+                type="button"
+                class="delete-button"
+                (click)="deleteHostel(hostel.id)">
+
+                Delete
+
+              </button>
+
+            </td>
+
+          </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+}
+
+
+@if (!loading && hostels.length === 0) {
+
+  <div class="empty-message">
+
+    <p>No hostels found.</p>
+
+  </div>
+
+}
+```
+
+  </div>
+
+}
+
+@if (showForm && selectedHostel) {
+
+  <div class="manage-hostels-container">
+
+```
+<div class="page-header">
+
+  @if (editingHostel) {
+
+    <h2>Edit Hostel</h2>
+
+    <p>
+      Update the hostel information.
+    </p>
+
+  } @else {
+
+    <h2>Add Hostel</h2>
+
+    <p>
+      Enter the new hostel information.
+    </p>
+
+  }
+
+</div>
+
+
+<div class="hostel-form-card">
+
+  <form (ngSubmit)="saveHostel()">
+
+    <div class="form-group">
+
+      <label for="hostelName">
+        Hostel Name
+      </label>
+
+      <input
+        type="text"
+        id="hostelName"
+        name="hostelName"
+        [(ngModel)]="selectedHostel.hostelName"
+        required>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label for="location">
+        Location
+      </label>
+
+      <input
+        type="text"
+        id="location"
+        name="location"
+        [(ngModel)]="selectedHostel.location"
+        required>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label for="gender">
+        Gender
+      </label>
+
+      <select
+        id="gender"
+        name="gender"
+        [(ngModel)]="selectedHostel.gender"
+        required>
+
+        <option value="Male">
+          Male
+        </option>
+
+        <option value="Female">
+          Female
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="form-buttons">
+
+      <button
+        type="submit"
+        class="save-button">
+
+        @if (editingHostel) {
+          Save Changes
+        } @else {
+          Add Hostel
+        }
+
+      </button>
+
+
+      <button
+        type="button"
+        class="cancel-button"
+        (click)="cancelForm()">
+
+        Cancel
+
+      </button>
+
+    </div>
+
+  </form>
+
+</div>
+```
+
+  </div>
+
+}
+

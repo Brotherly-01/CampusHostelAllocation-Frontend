@@ -1,0 +1,123 @@
+.dashboard-container {
+  width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+}
+
+.dashboard-header {
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-header h2 {
+  margin: 0 0 8px;
+}
+
+.dashboard-header p {
+  margin: 0;
+  color: #666;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.application-card {
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  margin-bottom: 20px;
+}
+
+.card-header h3 {
+  margin: 0;
+}
+
+.application-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: bold;
+  color: #444;
+}
+
+.value {
+  text-align: right;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.status.pending {
+  background-color: #fff3cd;
+}
+
+.status.approved {
+  background-color: #d1e7dd;
+}
+
+.status.rejected {
+  background-color: #f8d7da;
+}
+
+.dashboard-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.dashboard-buttons button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.hostel-application-button {
+  background-color: #e9ecef;
+}
+
+.allocation-button {
+  background-color: #e9ecef;
+}
+
+.logout-button {
+  background-color: #e9ecef;
+}
+
+.dashboard-buttons button:hover {
+  opacity: 0.85;
+}
+
+.profile-button {
+  background-color: #e9ecef;
+}

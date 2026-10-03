@@ -1,0 +1,113 @@
+<div class="profile-container">
+
+  <h2>My Profile</h2>
+
+
+  @if (loading) {
+
+    <p>Loading your profile...</p>
+
+  }
+
+
+  @if (!loading && profile) {
+
+    <div class="profile-card">
+
+      <div class="detail-row">
+
+        <span class="label">
+          Full Name
+        </span>
+
+        <span class="value">
+          {{ profile.fullName }}
+        </span>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <span class="label">
+          Email Address
+        </span>
+
+        <span class="value">
+          {{ profile.email }}
+        </span>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <span class="label">
+          Phone Number
+        </span>
+
+        <span class="value">
+          {{ profile.phoneNumber }}
+        </span>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <span class="label">
+          Gender
+        </span>
+
+        <span class="value">
+          {{ profile.gender }}
+        </span>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <span class="label">
+          Account Status
+        </span>
+
+        <span
+          class="status"
+          [class.active]="profile.isActive"
+          [class.inactive]="!profile.isActive">
+
+          @if (profile.isActive) {
+            Active
+          } @else {
+            Inactive
+          }
+
+        </span>
+
+      </div>
+
+    </div>
+
+  }
+
+
+  @if (!loading && !profile) {
+
+    <p>
+      Unable to load your profile.
+    </p>
+
+  }
+
+
+  <button
+    type="button"
+    class="back-button"
+    (click)="backToDashboard()">
+
+    Back to Dashboard
+
+  </button>
+
+</div>

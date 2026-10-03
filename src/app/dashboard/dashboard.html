@@ -1,0 +1,203 @@
+<div class="dashboard-container">
+
+  @if (!showHostelApplication && !showAllocation && !showProfile) {
+
+    <div class="dashboard-header">
+
+      <div>
+        <h2>Welcome, {{ fullName }}</h2>
+        <p>Campus Hostel Allocation System</p>
+      </div>
+
+    </div>
+
+
+    <div class="dashboard-content">
+
+      <div class="application-card">
+
+        <div class="card-header">
+          <h3>Hostel Application</h3>
+        </div>
+
+        <div class="application-details">
+
+          <div class="detail-row">
+
+            <span class="label">
+              Application ID
+            </span>
+
+            <span class="value">
+              {{ application?.id || 'No application' }}
+            </span>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span class="label">
+              Student Name
+            </span>
+
+            <span class="value">
+              {{ application?.studentName || fullName }}
+            </span>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span class="label">
+              Hostel
+            </span>
+
+            <span class="value">
+              {{ application?.hostelName || 'Not selected' }}
+            </span>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span class="label">
+              Location
+            </span>
+
+            <span class="value">
+              {{ application?.hostelLocation || 'Not available' }}
+            </span>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span class="label">
+              Hostel Gender
+            </span>
+
+            <span class="value">
+              {{ application?.hostelGender || 'Not available' }}
+            </span>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span class="label">
+              Application Date
+            </span>
+
+            <span class="value">
+
+              @if (application?.applicationDate) {
+
+                {{ application.applicationDate | date:'dd MMMM yyyy, h:mm a' }}
+
+              } @else {
+
+                Not available
+
+              }
+
+            </span>
+
+          </div>
+
+
+          <div class="detail-row">
+
+            <span class="label">
+              Status
+            </span>
+
+            <span
+              class="status"
+              [class.pending]="application?.status === 'Pending'"
+              [class.approved]="application?.status === 'Approved'"
+              [class.rejected]="application?.status === 'Rejected'">
+
+              {{ application?.status || 'No application' }}
+
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+     <div class="dashboard-buttons">
+
+         <button
+          class="profile-button"
+          (click)="showProfilePage()">
+
+          My Profile
+
+        </button>
+
+        <button
+          class="hostel-application-button"
+          (click)="showHostelApplicationPage()">
+
+          Apply for Hostel
+
+        </button>
+
+        <button
+          class="allocation-button"
+          (click)="showAllocationPage()">
+
+          My Room Allocation
+
+        </button>
+
+        <button
+          class="logout-button"
+          (click)="logout()">
+
+          Logout
+
+        </button>
+
+      </div>
+
+    </div>
+
+  }
+
+
+  @if (showHostelApplication) {
+
+    <app-hostel-application
+      (backToDashboardClicked)="showHostelApplication = false">
+    </app-hostel-application>
+
+  }
+
+
+  @if (showAllocation) {
+
+    <app-allocation
+      (backToDashboardClicked)="showAllocation = false">
+    </app-allocation>
+
+  }
+
+
+  @if (showProfile) {
+
+    <app-profile
+      (backToDashboardClicked)="showProfile = false">
+    </app-profile>
+
+  }
+
+</div>

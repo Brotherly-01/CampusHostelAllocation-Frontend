@@ -1,0 +1,320 @@
+@if (!showForm) {
+
+  <div class="manage-rooms-container">
+
+```
+<div class="page-header">
+
+  <div>
+
+    <h2>Manage Rooms</h2>
+
+    <p>
+      View and manage hostel rooms.
+    </p>
+
+  </div>
+
+
+  <button
+    type="button"
+    class="add-button"
+    (click)="showAddForm()">
+
+    Add Room
+
+  </button>
+
+</div>
+
+
+@if (loading) {
+
+  <div class="loading-message">
+
+    <p>
+      Loading rooms...
+    </p>
+
+  </div>
+
+}
+
+
+@if (!loading && rooms.length > 0) {
+
+  <div class="rooms-card">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>Room Number</th>
+
+          <th>Capacity</th>
+
+          <th>Occupied</th>
+
+          <th>Available</th>
+
+          <th>Hostel</th>
+
+          <th>Action</th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody>
+
+        @for (
+          room of rooms;
+          track room.id
+        ) {
+
+          <tr>
+
+            <td>
+              {{ room.roomNumber }}
+            </td>
+
+
+            <td>
+              {{ room.capacity }}
+            </td>
+
+
+            <td>
+              {{ room.occupiedSpaces }}
+            </td>
+
+
+            <td>
+              {{ room.capacity - room.occupiedSpaces }}
+            </td>
+
+
+            <td>
+
+              @if (room.hostel) {
+
+                {{ room.hostel.hostelName }}
+
+              } @else {
+
+                Hostel {{ room.hostelId }}
+
+              }
+
+            </td>
+
+
+            <td>
+
+              <button
+                type="button"
+                class="edit-button"
+                (click)="editRoom(room)">
+
+                Edit
+
+              </button>
+
+
+              <button
+                type="button"
+                class="delete-button"
+                (click)="deleteRoom(room.id)">
+
+                Delete
+
+              </button>
+
+            </td>
+
+          </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+}
+
+
+@if (!loading && rooms.length === 0) {
+
+  <div class="empty-message">
+
+    <p>
+      No rooms found.
+    </p>
+
+  </div>
+
+}
+```
+
+  </div>
+
+}
+
+@if (showForm && selectedRoom) {
+
+  <div class="manage-rooms-container">
+
+```
+<div class="page-header">
+
+  @if (editingRoom) {
+
+    <h2>
+      Edit Room
+    </h2>
+
+    <p>
+      Update the room information.
+    </p>
+
+  } @else {
+
+    <h2>
+      Add Room
+    </h2>
+
+    <p>
+      Enter the new room information.
+    </p>
+
+  }
+
+</div>
+
+
+<div class="room-form-card">
+
+  <form
+    (ngSubmit)="saveRoom()">
+
+
+    <div class="form-group">
+
+      <label for="roomNumber">
+        Room Number
+      </label>
+
+      <input
+        type="text"
+        id="roomNumber"
+        name="roomNumber"
+        [(ngModel)]="selectedRoom.roomNumber"
+        required>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label for="capacity">
+        Capacity
+      </label>
+
+      <input
+        type="number"
+        id="capacity"
+        name="capacity"
+        [(ngModel)]="selectedRoom.capacity"
+        min="1"
+        required>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label for="hostelId">
+        Hostel
+      </label>
+
+      <select
+        id="hostelId"
+        name="hostelId"
+        [(ngModel)]="selectedRoom.hostelId"
+        required>
+
+        <option
+          [ngValue]="null"
+          disabled>
+
+          Select Hostel
+
+        </option>
+
+
+        @for (
+          hostel of hostels;
+          track hostel.id
+        ) {
+
+          <option
+            [ngValue]="hostel.id">
+
+            {{ hostel.hostelName }}
+            -
+            {{ hostel.gender }}
+
+          </option>
+
+        }
+
+      </select>
+
+    </div>
+
+
+    <div class="form-buttons">
+
+      <button
+        type="submit"
+        class="save-button">
+
+        @if (editingRoom) {
+
+          Save Changes
+
+        } @else {
+
+          Add Room
+
+        }
+
+      </button>
+
+
+      <button
+        type="button"
+        class="cancel-button"
+        (click)="cancelForm()">
+
+        Cancel
+
+      </button>
+
+    </div>
+
+
+  </form>
+
+</div>
+```
+
+  </div>
+
+}
+

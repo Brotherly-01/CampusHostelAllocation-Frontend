@@ -1,0 +1,112 @@
+<div class="manage-allocations-container">
+
+  <div class="page-header">
+
+    <h2>
+      Manage Allocations
+    </h2>
+
+    <p>
+      View student room allocations.
+    </p>
+
+  </div>
+
+
+  @if (loading) {
+
+    <div class="loading-message">
+
+      <p>
+        Loading allocations...
+      </p>
+
+    </div>
+
+  }
+
+
+  @if (!loading && allocations.length > 0) {
+
+    <div class="allocations-card">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Student Name</th>
+
+            <th>Room Number</th>
+
+            <th>Hostel</th>
+
+            <th>Location</th>
+
+            <th>Allocation Date</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          @for (
+            allocation of allocations;
+            track allocation.id
+          ) {
+
+            <tr>
+
+              <td>
+                {{ allocation.studentName }}
+              </td>
+
+
+              <td>
+                {{ allocation.roomNumber }}
+              </td>
+
+
+              <td>
+                {{ allocation.hostelName }}
+              </td>
+
+
+              <td>
+                {{ allocation.hostelLocation }}
+              </td>
+
+
+              <td>
+                {{ allocation.allocationDate | date:'medium' }}
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  }
+
+
+  @if (!loading && allocations.length === 0) {
+
+    <div class="empty-message">
+
+      <p>
+        No room allocations found.
+      </p>
+
+    </div>
+
+  }
+
+</div>

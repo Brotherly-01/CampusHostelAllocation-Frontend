@@ -1,0 +1,63 @@
+<div class="hostel-application-container">
+
+  <h2>Apply for Hostel</h2>
+
+  <p>
+    Select a hostel from the available options below.
+  </p>
+
+
+  <div class="hostel-list">
+
+    @for (hostel of hostels; track hostel.id) {
+
+      <div class="hostel-card">
+
+        <h3>
+          {{ hostel.hostelName }}
+        </h3>
+
+        <p>
+          <strong>Location:</strong>
+          {{ hostel.location }}
+        </p>
+
+        <p>
+          <strong>Gender:</strong>
+          {{ hostel.gender }}
+        </p>
+
+        <button
+          type="button"
+          (click)="applyForHostel(hostel.id)">
+
+          Apply
+
+        </button>
+
+      </div>
+
+    }
+
+  </div>
+
+
+  @if (hostels.length === 0) {
+
+    <p>
+      No hostels available.
+    </p>
+
+  }
+
+
+  <button
+    type="button"
+    class="back-button"
+    (click)="backToDashboard()">
+
+    Back to Dashboard
+
+  </button>
+
+</div>

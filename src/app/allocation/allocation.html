@@ -1,0 +1,104 @@
+<div class="allocation-container">
+
+  <h2>My Room Allocation</h2>
+
+
+  @if (loading) {
+
+    <p>Loading your room allocation...</p>
+
+  }
+
+
+  @if (!loading && allocation) {
+
+    <div class="allocation-card">
+
+      <div class="detail-row">
+
+        <span class="label">
+          Allocation ID
+        </span>
+
+        <span class="value">
+          {{ allocation.allocationId }}
+        </span>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <span class="label">
+          Hostel
+        </span>
+
+        <span class="value">
+          {{ allocation.hostelName }}
+        </span>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <span class="label">
+          Location
+        </span>
+
+        <span class="value">
+          {{ allocation.hostelLocation }}
+        </span>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <span class="label">
+          Room Number
+        </span>
+
+        <span class="value">
+          {{ allocation.roomNumber }}
+        </span>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <span class="label">
+          Allocation Date
+        </span>
+
+        <span class="value">
+          {{ allocation.allocationDate | date:'dd MMMM yyyy, h:mm a' }}
+        </span>
+
+      </div>
+
+    </div>
+
+  }
+
+
+  @if (!loading && !allocation) {
+
+    <p>
+      You have not been allocated a room yet.
+    </p>
+
+  }
+
+
+  <button
+    type="button"
+    class="back-button"
+    (click)="backToDashboard()">
+
+    Back to Dashboard
+
+  </button>
+
+</div>

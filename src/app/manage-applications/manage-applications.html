@@ -1,0 +1,173 @@
+<div class="manage-applications-container">
+
+  <div class="page-header">
+
+```
+<h2>
+  Manage Applications
+</h2>
+
+<p>
+  View and manage student hostel applications.
+</p>
+```
+
+  </div>
+
+@if (loading) {
+
+```
+<div class="loading-message">
+
+  <p>
+    Loading applications...
+  </p>
+
+</div>
+```
+
+}
+
+@if (!loading && applications.length > 0) {
+
+```
+<div class="applications-card">
+
+  <table>
+
+    <thead>
+
+      <tr>
+
+        <th>Student Name</th>
+
+        <th>Hostel</th>
+
+        <th>Location</th>
+
+        <th>Gender</th>
+
+        <th>Application Date</th>
+
+        <th>Status</th>
+
+        <th>Action</th>
+
+      </tr>
+
+    </thead>
+
+
+    <tbody>
+
+      @for (
+        application of applications;
+        track application.id
+      ) {
+
+        <tr>
+
+          <td>
+            {{ application.studentName }}
+          </td>
+
+
+          <td>
+            {{ application.hostelName }}
+          </td>
+
+
+          <td>
+            {{ application.hostelLocation }}
+          </td>
+
+
+          <td>
+            {{ application.hostelGender }}
+          </td>
+
+
+          <td>
+            {{ application.applicationDate | date:'medium' }}
+          </td>
+
+
+          <td>
+
+            <span
+              class="status"
+              [class.pending]="application.status === 'Pending'"
+              [class.approved]="application.status === 'Approved'"
+              [class.rejected]="application.status === 'Rejected'">
+
+              {{ application.status }}
+
+            </span>
+
+          </td>
+
+
+          <td>
+
+            @if (
+              application.status === 'Pending'
+            ) {
+
+              <button
+                type="button"
+                class="approve-button"
+                (click)="approveApplication(application.id)">
+
+                Approve
+
+              </button>
+
+
+              <button
+                type="button"
+                class="reject-button"
+                (click)="rejectApplication(application.id)">
+
+                Reject
+
+              </button>
+
+            } @else {
+
+              <span class="completed-text">
+                Completed
+              </span>
+
+            }
+
+          </td>
+
+        </tr>
+
+      }
+
+    </tbody>
+
+  </table>
+
+</div>
+```
+
+}
+
+@if (!loading && applications.length === 0) {
+
+```
+<div class="empty-message">
+
+  <p>
+    No hostel applications found.
+  </p>
+
+</div>
+```
+
+}
+
+</div>
+

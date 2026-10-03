@@ -1,0 +1,338 @@
+@if (
+  !showManageUsers &&
+  !showManageHostels &&
+  !showManageRooms &&
+  !showManageApplications &&
+  !showManageAllocations
+) {
+
+  <div class="admin-dashboard-container">
+
+    <div class="admin-header">
+
+      <h2>Admin Dashboard</h2>
+
+      <p>
+        Campus Hostel Allocation System
+      </p>
+
+    </div>
+
+
+    <div class="admin-content">
+
+      <div class="admin-card">
+      <h3>Welcome, {{ adminName }}</h3>
+
+        <p>
+          Manage the Campus Hostel Allocation System
+          from this dashboard.
+        </p>
+
+      </div>
+
+
+      <!-- Dashboard Statistics -->
+
+      <div class="statistics-section">
+
+        <h3>System Statistics</h3>
+
+        <button
+          type="button"
+          class="refresh-statistics-button"
+          (click)="loadStatistics()">
+
+          Refresh Statistics
+
+        </button>
+
+        @if (loadingStatistics) {
+
+          <div class="statistics-loading">
+
+            Loading statistics...
+
+          </div>
+
+        }
+
+
+        @if (!loadingStatistics && statistics) {
+
+          <div class="statistics-grid">
+
+
+            <div class="stat-card">
+
+              <h4>Total Students</h4>
+
+              <p>
+                {{ statistics.totalStudents }}
+              </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <h4>Total Hostels</h4>
+
+              <p>
+                {{ statistics.totalHostels }}
+              </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <h4>Total Rooms</h4>
+
+              <p>
+                {{ statistics.totalRooms }}
+              </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <h4>Pending Applications</h4>
+
+              <p>
+                {{ statistics.pendingApplications }}
+              </p>
+
+            </div>
+
+             @if (statistics.pendingApplications > 0) {
+
+              <button
+                type="button"
+                class="pending-message"
+                (click)="showManageApplicationsPage()">
+
+                You have
+                {{ statistics.pendingApplications }}
+                pending application(s) waiting for review.
+
+              </button>
+
+            }
+
+              @if (statistics.pendingApplications === 0) {
+
+                <p class="no-pending-message">
+                  There are no pending applications.
+                </p>
+
+              }
+
+            <div class="stat-card">
+
+              <h4>Approved Applications</h4>
+
+              <p>
+                {{ statistics.approvedApplications }}
+              </p>
+
+            </div>
+
+            <div class="stat-card">
+
+              <h4>Active Students</h4>
+
+              <p>
+                {{ statistics.activeStudents }}
+              </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <h4>Inactive Students</h4>
+
+              <p>
+                {{ statistics.inactiveStudents }}
+              </p>
+
+            </div>
+
+            <div class="stat-card">
+
+              <h4>Total Applications</h4>
+
+              <p>
+                {{
+                  statistics.pendingApplications +
+                  statistics.approvedApplications
+                }}
+              </p>
+
+            </div>
+
+
+          </div>
+
+        }
+
+      </div>
+
+
+      <!-- Admin Management Buttons -->
+
+      <div class="admin-buttons">
+
+        <button
+          type="button"
+          class="admin-button"
+          (click)="showManageUsersPage()">
+
+          Manage Users
+
+        </button>
+
+
+        <button
+          type="button"
+          class="admin-button"
+          (click)="showManageHostelsPage()">
+
+          Manage Hostels
+
+        </button>
+
+
+        <button
+          type="button"
+          class="admin-button"
+          (click)="showManageRoomsPage()">
+
+          Manage Rooms
+
+        </button>
+
+
+        <button
+          type="button"
+          class="admin-button"
+          (click)="showManageApplicationsPage()">
+
+          Manage Applications
+
+        </button>
+
+
+        <button
+          type="button"
+          class="admin-button"
+          (click)="showManageAllocationsPage()">
+
+          Manage Allocations
+
+        </button>
+
+
+        <button
+          type="button"
+          class="admin-button"
+          (click)="logout()">
+
+          Logout
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}
+
+
+@if (showManageUsers) {
+
+  <app-manage-users></app-manage-users>
+
+
+  <button
+    type="button"
+    class="back-to-admin-button"
+    (click)="backToDashboard()">
+
+    Back to Admin Dashboard
+
+  </button>
+
+}
+
+
+@if (showManageHostels) {
+
+  <app-manage-hostels></app-manage-hostels>
+
+
+  <button
+    type="button"
+    class="back-to-admin-button"
+    (click)="backToDashboard()">
+
+    Back to Admin Dashboard
+
+  </button>
+
+}
+
+
+@if (showManageRooms) {
+
+  <app-manage-rooms></app-manage-rooms>
+
+
+  <button
+    type="button"
+    class="back-to-admin-button"
+    (click)="backToDashboard()">
+
+    Back to Admin Dashboard
+
+  </button>
+
+}
+
+
+@if (showManageApplications) {
+
+  <app-manage-applications></app-manage-applications>
+
+
+  <button
+    type="button"
+    class="back-to-admin-button"
+    (click)="backToDashboard()">
+
+    Back to Admin Dashboard
+
+  </button>
+
+}
+
+
+@if (showManageAllocations) {
+
+  <app-manage-allocations></app-manage-allocations>
+
+
+  <button
+    type="button"
+    class="back-to-admin-button"
+    (click)="backToDashboard()">
+
+    Back to Admin Dashboard
+
+  </button>
+
+}

@@ -1,0 +1,338 @@
+:host {
+  display: block;
+  color: #222;
+}
+
+
+/* Main Dashboard */
+
+.admin-dashboard-container {
+  width: min(900px, calc(100% - 40px));
+  margin: 40px auto;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+
+/* Header */
+
+.admin-header {
+  padding: 25px;
+  margin-bottom: 25px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  background: #fff;
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+.admin-header h2 {
+  margin: 0 0 8px;
+  color: #222;
+}
+
+.admin-header p {
+  margin: 0;
+  color: #666;
+}
+
+
+/* Main Content */
+
+.admin-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+
+/* Welcome Card */
+
+.admin-card {
+  padding: 25px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  background: #fff;
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+.admin-card h3 {
+  margin-top: 0;
+  color: #222;
+}
+
+.admin-card p {
+  color: #444;
+}
+
+
+/* Statistics */
+
+.statistics-section {
+  margin-top: 5px;
+
+  padding: 25px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+
+  background-color: #fff;
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+.statistics-section h3 {
+  margin: 0 0 15px;
+}
+
+
+/* Refresh Button */
+
+.refresh-statistics-button {
+  display: inline-block;
+
+  margin: 0 0 20px;
+
+  padding: 12px 20px;
+
+  box-sizing: border-box;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #333;
+
+  color: #fff;
+
+  font-size: 14px;
+  line-height: 1.4;
+
+  cursor: pointer;
+}
+
+.refresh-statistics-button:hover {
+  background-color: #555;
+}
+
+
+/* Statistics Grid */
+
+.statistics-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+
+  width: 100%;
+}
+
+
+/* Statistics Cards */
+
+.stat-card {
+  min-height: 120px;
+
+  padding: 22px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  background-color: #fff;
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.08);
+
+  text-align: center;
+}
+
+.stat-card h4 {
+  margin: 0 0 12px;
+
+  font-size: 15px;
+
+  color: #555;
+}
+
+.stat-card p {
+  margin: 0;
+
+  font-size: 30px;
+
+  font-weight: bold;
+
+  color: #222;
+}
+
+
+/* Loading */
+
+.statistics-loading {
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  color: #666;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  background-color: #fff;
+}
+
+
+/* Admin Management Buttons */
+
+.admin-buttons {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 15px;
+
+  width: 100%;
+}
+
+.admin-button {
+  display: block;
+
+  width: 100%;
+  min-height: 48px;
+
+  padding: 14px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #ddd;
+  border-radius: 6px;
+
+  background: #e9ecef;
+
+  color: #222;
+
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+.admin-button:hover {
+  background: #d9dee3;
+}
+
+
+/* Back Button */
+
+.back-to-admin-button {
+  display: block;
+
+  width: 220px;
+
+  margin: 25px auto;
+
+  padding: 12px;
+
+  box-sizing: border-box;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #e9ecef;
+
+  color: #222;
+
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+.back-to-admin-button:hover {
+  background-color: #d9dee3;
+}
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+  .statistics-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .admin-dashboard-container {
+    width: calc(100% - 20px);
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  .statistics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .back-to-admin-button {
+    width: 100%;
+  }
+
+}
+.pending-message {
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 20px;
+
+  padding: 12px 16px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #ddd;
+
+  border-radius: 6px;
+
+  background-color: #f5f5f5;
+
+  color: #444;
+
+  font-size: 14px;
+
+  text-align: center;
+
+  cursor: pointer;
+}
+
+
+.pending-message:hover {
+  background-color: #e9ecef;
+}

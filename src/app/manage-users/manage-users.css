@@ -1,0 +1,119 @@
+.manage-users-container {
+  width: min(1100px, calc(100% - 40px));
+  margin: 40px auto;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.page-header {
+  padding: 25px;
+  margin-bottom: 25px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.page-header h2 {
+  margin: 0 0 8px;
+}
+
+.page-header p {
+  margin: 0;
+  color: #666;
+}
+
+.users-card {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+thead {
+  background-color: #f1f3f5;
+}
+
+th {
+  padding: 15px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.status.active {
+  background-color: #d1e7dd;
+}
+
+.status.inactive {
+  background-color: #f8d7da;
+}
+
+.edit-button,
+.deactivate-button {
+  padding: 8px 12px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.edit-button {
+  background-color: #e9ecef;
+}
+
+.deactivate-button {
+  background-color: #f8d7da;
+}
+
+.edit-button:hover,
+.deactivate-button:hover {
+  opacity: 0.8;
+}
+
+.loading-message,
+.empty-message {
+  padding: 30px;
+  text-align: center;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+
+  .manage-users-container {
+    width: calc(100% - 20px);
+    padding: 10px;
+  }
+
+  .page-header {
+    padding: 20px;
+  }
+
+}

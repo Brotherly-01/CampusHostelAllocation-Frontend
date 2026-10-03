@@ -1,0 +1,261 @@
+@if (!showEditForm) {
+
+  <div class="manage-users-container">
+
+
+<div class="page-header">
+
+  <div>
+
+    <h2>Manage Users</h2>
+
+    <p>
+      View and manage registered students.
+    </p>
+
+  </div>
+
+</div>
+
+@if (loading) {
+
+  <div class="loading-message">
+
+    <p>Loading users...</p>
+
+  </div>
+
+}
+
+@if (!loading && users.length > 0) {
+
+  <div class="users-card">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Gender</th>
+          <th>Status</th>
+          <th>Action</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        @for (user of users; track user.id) {
+
+          <tr>
+
+            <td>{{ user.fullName }}</td>
+
+            <td>{{ user.email }}</td>
+
+            <td>{{ user.phoneNumber }}</td>
+
+            <td>{{ user.gender }}</td>
+
+            <td>
+
+              <span
+                class="status"
+                [class.active]="user.isActive"
+                [class.inactive]="!user.isActive">
+
+                @if (user.isActive) {
+                  Active
+                } @else {
+                  Inactive
+                }
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <button
+                type="button"
+                class="edit-button"
+                (click)="editUser(user)">
+
+                Edit
+
+              </button>
+
+              @if (user.isActive) {
+
+<button
+type="button"
+class="deactivate-button"
+(click)="deactivateUser(user.id)">
+
+Deactivate
+
+  </button>
+
+} @else {
+
+<button
+type="button"
+class="activate-button"
+(click)="activateUser(user.id)">
+
+Activate
+
+  </button>
+
+}
+
+
+            </td>
+
+          </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+}
+
+@if (!loading && users.length === 0) {
+
+  <div class="empty-message">
+
+    <p>No users found.</p>
+
+  </div>
+
+}
+
+  </div>
+
+}
+
+@if (showEditForm && selectedUser) {
+
+  <div class="manage-users-container">
+
+<div class="page-header">
+
+  <h2>Edit User</h2>
+
+  <p>
+    Update the user's information.
+  </p>
+
+</div>
+
+<div class="edit-user-card">
+
+  <form (ngSubmit)="updateUser()">
+
+    <div class="form-group">
+
+      <label for="fullName">
+        Full Name
+      </label>
+
+      <input
+        type="text"
+        id="fullName"
+        name="fullName"
+        [(ngModel)]="selectedUser.fullName"
+        required>
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="email">
+        Email Address
+      </label>
+
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="selectedUser.email"
+        required>
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="phoneNumber">
+        Phone Number
+      </label>
+
+      <input
+        type="text"
+        id="phoneNumber"
+        name="phoneNumber"
+        [(ngModel)]="selectedUser.phoneNumber"
+        required>
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="gender">
+        Gender
+      </label>
+
+      <select
+        id="gender"
+        name="gender"
+        [(ngModel)]="selectedUser.gender"
+        required>
+
+        <option value="Male">
+          Male
+        </option>
+
+        <option value="Female">
+          Female
+        </option>
+
+      </select>
+
+    </div>
+
+    <div class="edit-user-buttons">
+
+      <button
+        type="submit"
+        class="save-button">
+
+        Save Changes
+
+      </button>
+
+      <button
+        type="button"
+        class="cancel-button"
+        (click)="cancelEdit()">
+
+        Cancel
+
+      </button>
+
+    </div>
+
+  </form>
+
+</div>
+
+
+  </div>
+
+}
